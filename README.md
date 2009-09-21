@@ -18,3 +18,9 @@ The Python module is `radio2.py`, which defines a set of functions used by the u
 In their most common use, the scripts get the URLs and the track listings of the most recent episodes of the shows. The library has ways to get the show info for older episodes.
 
 The `install.sh` script should be run after any revisions to the scripts. That will keep the copies that are actually run by Audio Hijack Pro in sync with the copies under version control. The script assumes the directory structure I use; anyone else using these scripts will have to mimic my directory structure or edit `install.sh`.
+
+# License #
+
+MIT.
+
+The Recording AppleScripts are edited versions of a script written by Rogue Amoeba Software and distributed with Audio Hijack Pro.
