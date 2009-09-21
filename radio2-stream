@@ -1,0 +1,15 @@
+#!/usr/bin/python
+
+import radio2
+import sys
+from getopt import getopt
+
+usage = '''radio2-stream show
+
+Returns the URL of the stream of the given show (60s, 70s, jukebox, soul).'''
+
+# Set the info from the command line argument.
+if len(sys.argv[1:]) == 0:
+  print usage
+else:
+  print 'http://bbc.co.uk/iplayer/console/' + radio2.programCode(sys.argv[1])
