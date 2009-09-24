@@ -21,7 +21,11 @@ if len(sys.argv[1:]) == 0:
 else:
   optlist, args = getopt(sys.argv[1:], 'c:h')
   if len(args) > 0:
-    code = radio2.programCode(args[0])
+    try:
+      code = radio2.programCode(args[0])
+    except AttributeError:
+      print 'None'
+      sys.exit()
   for o,a in optlist:
     if o == '-c':
       code = a
