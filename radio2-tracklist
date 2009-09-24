@@ -29,4 +29,7 @@ else:
       print usage
       sys.exit()
 
-print radio2.trackList(code).encode('utf-8')
+try:
+  print radio2.trackList(code).encode('utf-8')
+except AttributeError:
+  print 'None'

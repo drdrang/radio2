@@ -15,4 +15,4 @@ else:
   try:
     print 'http://bbc.co.uk/iplayer/console/' + radio2.programCode(sys.argv[1])
   except AttributeError:
-    print 'No program'
+    print 'None'
