@@ -12,4 +12,7 @@ Returns the URL of the stream of the given show (60s, 70s, jukebox, soul).'''
 if len(sys.argv[1:]) == 0:
   print usage
 else:
-  print 'http://bbc.co.uk/iplayer/console/' + radio2.programCode(sys.argv[1])
+  try:
+    print 'http://bbc.co.uk/iplayer/console/' + radio2.programCode(sys.argv[1])
+  except AttributeError:
+    print 'No program'
