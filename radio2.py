@@ -13,7 +13,11 @@ showinfo = {'jukebox': (5, 'Mark Lamarr'),
 def recentScheduleURL(showday, day=datetime.date.today()):
   'Return the schedule URL for the most recent showday (0=Mon, 6=Sun) on or before day.'
 
-  backup = datetime.timedelta((day.weekday() - showday) % 7)
+  if isinstance(showday, tuple):
+      backups = [ (day.weekday() - d) % 7 for d in showday ]
+      backup = datetime.timedelta(min(backups))
+  else:
+      backup = datetime.timedelta((day.weekday() - showday) % 7)
   programDay = day - backup
   return 'http://www.bbc.co.uk/radio2/programmes/schedules/%d/%02d/%02d' % (programDay.year, programDay.month, programDay.day)
 
