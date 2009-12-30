@@ -34,7 +34,7 @@ def trackList(code):
   progURL = 'http://bbc.co.uk/programmes/' + code
   progHTML = urllib.urlopen(progURL).read()
   progSoup = BeautifulSoup.BeautifulSoup(progHTML)
-  tracklist = progSoup.findAll('div', 'summary')
+  tracklist = progSoup.findAll('div', 'segment music-segment')
 
   # Create a list of songs with title and artist.
   songinfo = []
