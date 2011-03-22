@@ -7,7 +7,9 @@ import re
 showinfo = {'jukebox': (5, 'Mark Lamarr'),
             '70s': (6, re.compile(r'Sounds of the 70s')),
             '60s': (5, re.compile(r'Sounds of the 60s')),
-            'soul': (2, 'Trevor Nelson')}
+            'soul': (2, 'Trevor Nelson'),
+            'saturday': (5, re.compile(r'Bob Harris Saturday')),
+            'sunday': (6, re.compile(r'Bob Harris Sunday'))}
 
 
 def recentScheduleURL(showday, day=datetime.date.today()):
