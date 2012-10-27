@@ -38,13 +38,13 @@ def trackList(code):
   progURL = 'http://bbc.co.uk/programmes/' + code
   progHTML = urllib.urlopen(progURL).read()
   progSoup = BeautifulSoup.BeautifulSoup(progHTML)
-  tracklist = progSoup.findAll('div', 'segment music-segment')
+  tracklist = progSoup.findAll('li', 'segment track')
 
   # Create a list of songs with title and artist.
   songinfo = []
   for t in tracklist:
       try:
-        track  = t.find('span', 'track').string
+        track  = t.find('span', 'title').string
         artist = t.find('span', 'artist').string
         songinfo.append('%s\nby %s' % (track, artist))
       except AttributeError:
@@ -55,7 +55,8 @@ def trackList(code):
   songs = BeautifulSoup.BeautifulStoneSoup(songs, convertEntities=BeautifulSoup.BeautifulStoneSoup.HTML_ENTITIES)
 
   # Get the date of the show.
-  bdate = progSoup.find('div', 'date').span.string
+  footer = progSoup.find('div', id = 'programme-broadcasts')
+  bdate = footer.find('span', 'date').string
 
   return '%s\n\n%s' % (bdate, songs)
 
