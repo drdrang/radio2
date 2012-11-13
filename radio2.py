@@ -26,7 +26,7 @@ def programCode(show):
   try:
     schedHTML = urllib.urlopen(recentScheduleURL(showinfo[show][0])).read()
     schedSoup = BeautifulSoup.BeautifulSoup(schedHTML)
-    return schedSoup.find(name='span', text=showinfo[show][1]).parent.parent['href'].split('/')[-1]
+    return schedSoup.find(name='span', text=showinfo[show][1]).findParents(name='a')[0]['href'].split('/')[-1]
   except KeyError:
     return None
 
