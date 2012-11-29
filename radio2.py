@@ -4,9 +4,9 @@ import BeautifulSoup
 import re
 
 # The particulars for the shows we're interested in.
-showinfo = {'70s': (6, re.compile(r'Sounds of the 70s')),
-            '60s': (5, re.compile(r'Sounds of the 60s')),
-            'soul': (2, re.compile(r'Trevor Nelson'))}
+showinfo = {'70s': (6, re.compile(r"Sounds of the '?70s")),
+            '60s': (5, re.compile(r"Sounds of the '?60s")),
+            'soul': (2, re.compile(r"Trevor Nelson"))}
 
 
 def recentScheduleURL(showday, day=datetime.date.today()):
