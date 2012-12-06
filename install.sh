@@ -1,8 +1,6 @@
 #!/bin/bash
 
-cp radio2.py /Library/Python/2.6/site-packages/
-cp radio2-tracklist ~/bin/
-cp radio2-stream ~/bin/
-cp *URL.scpt ~/Library/Scripts/Applications/Audio\ Hijack\ Pro/
+python radio2.py
+sudo cp radio2.py* /Library/Python/2.7/site-packages/
 cp *Recording.scpt ~/Library/Application\ Support/Audio\ Hijack\ Pro/Recording\ Scripts/
 cp *.png ~/Pictures/bbc/

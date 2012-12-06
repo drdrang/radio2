@@ -6,7 +6,8 @@ import re
 # The particulars for the shows we're interested in.
 showinfo = {'70s': (6, re.compile(r"Sounds of the '?70s")),
             '60s': (5, re.compile(r"Sounds of the '?60s")),
-            'soul': (2, re.compile(r"Trevor Nelson"))}
+            'soul': (2, re.compile(r"Trevor Nelson")),
+            'at': (3, re.compile(r"At the BBC"))}
 
 
 def recentScheduleURL(showday, day=datetime.date.today()):
@@ -58,3 +59,6 @@ def trackList(code):
   bdate = footer.find('span', 'date').string
 
   return '%s\n\n%s' % (bdate, songs)
+
+if __name__ == "__main__":
+  print programCode('70s')
