@@ -1,0 +1,57 @@
+#!/usr/bin/python
+
+import radio2
+import sys
+from getopt import getopt
+
+usage = '''radio2-rssitem [option] show url length
+
+options:
+  -c:    use the show's program code rather than its name
+  -h:    print this message
+
+If you give the show name (60s, 70s, at, jukebox, soul) and a URL for
+the enclosure, it will generate a podcast RSS item for the most recent
+episode of that show. If you use the -c option, it can retrieve any
+episode if you give the code instead of the show name.'''
+
+# Parse the command line argument.
+if len(sys.argv[1:]) < 2:
+  print usage
+  sys.exit()
+else:
+  optlist, args = getopt(sys.argv[1:], 'ch')
+  if len(args) < 3:
+    print usage
+    sys.exit()
+  if optlist:
+    for o,a in optlist:
+      if o == '-c':
+        code = args[0]
+        url = args[1]
+        length = args[2]
+      if o == '-h':
+        print usage
+        sys.exit()
+  else:
+    code = radio2.programCode(args[0])
+    url = args[1]
+    length = args[2]
+
+# Construct the <item>.
+try:
+  (title, date, tlist) = radio2.episodeInfo(code)
+  item = '''<item>
+<title>{title}</title>
+<link>http://bbc.co.uk/programmes/{code}</link>
+<guid>{url}</guid>
+<description>{tlist}</description>
+<enclosure url="{url}" length="{length}" type="audio/mpeg"/>
+<category>Podcasts</category>
+<pubDate>{date}</pubDate>
+</item>
+'''.format(**vars())
+
+  print item.encode('utf-8')
+except:
+ print "None"
