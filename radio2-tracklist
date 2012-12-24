@@ -10,9 +10,9 @@ options:
   -c code: use the show's program code rather than its name
   -h:      print this message
 
-If you give the show name (60s, 70s, jukebox, soul), it will retrieve the tracklist
-for the most recent episode of that show. If you use the -c option, it can retrieve
-any episode.'''
+If you give the show name (60s, 70s, at, jukebox, soul), it will
+retrieve the tracklist for the most recent episode of that show.
+If you use the -c option, it can retrieve any episode.'''
 
 # Parse the command line argument.
 if len(sys.argv[1:]) == 0:
@@ -34,6 +34,11 @@ else:
       sys.exit()
 
 try:
-  print radio2.trackList(code).encode('utf-8')
+  tracklist = '''%s
+%s
+
+%s
+''' % radio2.episodeInfo(code)
+  print tracklist.encode('utf-8')
 except AttributeError:
   print 'None'

@@ -31,8 +31,9 @@ def programCode(show):
   except KeyError:
     return None
 
-def trackList(code):
-  'Return text with the track and artist names for each song played.'
+
+def episodeInfo(code):
+  'Return tuple with episode name, date, and track and artist names for each song played.'
 
   # Get all the track info
   progURL = 'http://bbc.co.uk/programmes/' + code
@@ -57,8 +58,11 @@ def trackList(code):
   # Get the date of the show.
   footer = progSoup.find('div', id = 'programme-broadcasts')
   bdate = footer.find('span', 'date').string
+  
+  # Get the episode title.
+  title = progSoup.find('h1', 'episode-title').string
 
-  return '%s\n\n%s' % (bdate, songs)
+  return (title, bdate, songs)
 
 if __name__ == "__main__":
   print programCode('70s')
