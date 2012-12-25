@@ -34,11 +34,13 @@ else:
       sys.exit()
 
 try:
+  (title, date, songs) = radio2.episodeInfo(code)
+  datestr = date.strftime("%a, %B %-d, %Y")
   tracklist = '''%s
 %s
 
 %s
-''' % radio2.episodeInfo(code)
+''' % (title, datestr, songs)
   print tracklist.encode('utf-8')
 except AttributeError:
   print 'None'

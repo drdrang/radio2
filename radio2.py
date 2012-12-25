@@ -1,4 +1,5 @@
 import datetime
+import pytz
 import urllib
 import BeautifulSoup
 import re
@@ -56,13 +57,19 @@ def episodeInfo(code):
   songs = BeautifulSoup.BeautifulStoneSoup(songs, convertEntities=BeautifulSoup.BeautifulStoneSoup.HTML_ENTITIES)
 
   # Get the date of the show.
+  dformat = "%a %b %d %Y"
   footer = progSoup.find('div', id = 'programme-broadcasts')
-  bdate = footer.find('span', 'date').string
+  datestr = footer.find('span', 'date').string
+  dateparts = datestr.split()
+  months = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+  dateparts[2] = months.index(dateparts[2]) + 1
+  [day, mon, year] = [ int(x) for x in dateparts[1:] ]
+  showdate = datetime.datetime(year, mon, day, 12, 0, 0)
   
   # Get the episode title.
   title = progSoup.find('h1', 'episode-title').string
 
-  return (title, bdate, songs)
+  return (title, showdate, songs)
 
 if __name__ == "__main__":
   print programCode('70s')
