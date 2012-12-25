@@ -3,6 +3,7 @@
 import radio2
 import sys
 from getopt import getopt
+import datetime
 
 usage = '''radio2-rssitem [option] show url length
 
@@ -41,6 +42,7 @@ else:
 # Construct the <item>.
 try:
   (title, date, tlist) = radio2.episodeInfo(code)
+  datestr = date.strftime("%a, %d %b %Y %H:%M:%S +0000")
   item = '''<item>
 <title>{title}</title>
 <link>http://bbc.co.uk/programmes/{code}</link>
@@ -48,7 +50,7 @@ try:
 <description>{tlist}</description>
 <enclosure url="{url}" length="{length}" type="audio/mpeg"/>
 <category>Podcasts</category>
-<pubDate>{date}</pubDate>
+<pubDate>{datestr}</pubDate>
 </item>
 '''.format(**vars())
 
