@@ -42,16 +42,18 @@ else:
 # Construct the <item>.
 try:
   (title, date, tlist) = radio2.episodeInfo(code)
-  datestr = date.strftime("%a, %d %b %Y %H:%M:%S +0000")
+  tlist = str(tlist).replace('\n', '<br />\n')
+  date = date.strftime("%a, %d %b %Y %H:%M:%S +0000")
   item = '''<item>
 <title>{title}</title>
 <link>http://bbc.co.uk/programmes/{code}</link>
 <guid>{url}</guid>
-<description>{tlist}</description>
+<description><![CDATA[{tlist}]]></description>
 <enclosure url="{url}" length="{length}" type="audio/mpeg"/>
 <category>Podcasts</category>
-<pubDate>{datestr}</pubDate>
+<pubDate>{date}</pubDate>
 </item>
+
 '''.format(**vars())
 
   print item.encode('utf-8')
