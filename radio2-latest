@@ -4,7 +4,7 @@ import radio2
 import sys
 from getopt import getopt
 
-usage = '''radio2-show show
+usage = '''radio2-latest show
 
 Returns the URL of the page of the given
 show (60s, 70s, at, jukebox, soul).'''

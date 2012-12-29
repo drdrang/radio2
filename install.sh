@@ -11,4 +11,5 @@ cp *.png ~/Pictures/bbc/
 echo "Copying scripts..."
 cp radio2-stream ~/bin/
 cp radio2-tracklist ~/bin/
-cp radio2-show ~/bin/
+cp radio2-latest ~/bin/
+cp radio2-rssitem ~/bin/
