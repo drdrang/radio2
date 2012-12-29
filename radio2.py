@@ -3,6 +3,7 @@ import pytz
 import urllib
 import BeautifulSoup
 import re
+from sys import argv
 
 # The particulars for the shows we're interested in.
 showinfo = {'70s': (6, re.compile(r"Sounds of the '?70s")),
@@ -96,4 +97,8 @@ def rssitem(code, show, length):
   
 
 if __name__ == "__main__":
-  print programCode('70s')
+  if len(argv) > 1 and argv[1] in showinfo.keys():
+    print programCode(argv[1])
+  else:
+    print programCode('70s')
+
