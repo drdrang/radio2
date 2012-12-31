@@ -73,7 +73,7 @@ def episodeInfo(code):
   return (title, showdate, songs)
 
 
-def rssitem(code, show, length):
+def rssitem(code, length):
   'Generate an RSS entry for the given show.'
   
   try:
@@ -83,9 +83,9 @@ def rssitem(code, show, length):
     item = '''  <item>
       <title>{title}</title>
       <link>http://bbc.co.uk/programmes/{code}</link>
-      <guid>http://leancrew.com/bbc/{show}/{code}.m4a</guid>
+      <guid>http://leancrew.com/bbc/{code}.m4a</guid>
       <description><![CDATA[{tlist}]]></description>
-      <enclosure url="http://leancrew.com/bbc/{show}/{code}.m4a" length="{length}" type="audio/mpeg"/>
+      <enclosure url="http://leancrew.com/bbc/{code}.m4a" length="{length}" type="audio/mpeg"/>
       <category>Podcasts</category>
       <pubDate>{date}</pubDate>
     </item>
