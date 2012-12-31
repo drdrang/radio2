@@ -28,8 +28,7 @@ else:
     for o,a in optlist:
       if o == '-c':
         code = args[0]
-        show = args[1]
-        length = args[2]
+        length = args[1]
       if o == '-h':
         print usage
         sys.exit()
@@ -39,7 +38,7 @@ else:
     length = args[1]
 
 # Construct the <item>.
-item = radio2.rssitem(code, show, length)
+item = radio2.rssitem(code, length)
 if item:
   print item.encode('utf-8')
 else:
