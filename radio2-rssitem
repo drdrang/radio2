@@ -8,12 +8,12 @@ import datetime
 usage = '''radio2-rssitem [option] show length
 
 options:
-  -c:    use the episodes's program code
+  -c:    use the episode's program code
   -h:    print this message
 
 Without the -c option, it will generate a podcast RSS item for the most
-recent episode of that show. If you use the -c option, it can retrieve any
-episode of that show.'''
+recent episode of that show (70s, 60s, soul, at). If you use the -c option,
+it can retrieve any episode using the given code.'''
 
 # Parse the command line argument.
 if len(sys.argv[1:]) < 2:
