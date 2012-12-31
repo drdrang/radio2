@@ -81,14 +81,14 @@ def rssitem(code, length):
     tlist = str(tlist).replace('\n', '<br />\n')
     date = date.strftime("%a, %d %b %Y %H:%M:%S +0000")
     item = '''  <item>
-      <title>{title}</title>
-      <link>http://bbc.co.uk/programmes/{code}</link>
-      <guid>http://leancrew.com/bbc/{code}.m4a</guid>
-      <description><![CDATA[{tlist}]]></description>
-      <enclosure url="http://leancrew.com/bbc/{code}.m4a" length="{length}" type="audio/mpeg"/>
-      <category>Podcasts</category>
-      <pubDate>{date}</pubDate>
-    </item>
+    <title>{title}</title>
+    <link>http://bbc.co.uk/programmes/{code}</link>
+    <guid>http://leancrew.com/bbc/{code}.m4a</guid>
+    <description><![CDATA[{tlist}]]></description>
+    <enclosure url="http://leancrew.com/bbc/{code}.m4a" length="{length}" type="audio/mpeg"/>
+    <category>Podcasts</category>
+    <pubDate>{date}</pubDate>
+  </item>
   '''.format(**vars())
 
     return item
