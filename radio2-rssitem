@@ -39,6 +39,7 @@ else:
 
 # Construct the <item>.
 item = radio2.rssitem(code, length)
+print item
 if item:
   print item.encode('utf-8')
 else:

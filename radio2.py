@@ -66,35 +66,34 @@ def episodeInfo(code):
   dateparts[2] = months.index(dateparts[2]) + 1
   [day, mon, year] = [ int(x) for x in dateparts[1:] ]
   showdate = datetime.datetime(year, mon, day, 12, 0, 0)
-  
-  # Get the episode title.
-  title = progSoup.find('h1', 'episode-title').string
 
-  return (title, showdate, songs)
+  # Get the episode title.
+  title = unicode(progSoup.find('h1', 'episode-title').string)
+  return (title, showdate, unicode(songs))
 
 
 def rssitem(code, length):
   'Generate an RSS entry for the given show.'
-  
-  try:
-    (title, date, tlist) = episodeInfo(code)
-    tlist = str(tlist).replace('\n', '<br />\n')
-    date = date.strftime("%a, %d %b %Y %H:%M:%S +0000")
-    item = '''  <item>
-    <title>{title}</title>
-    <link>http://bbc.co.uk/programmes/{code}</link>
-    <guid>http://leancrew.com/bbc/{code}.m4a</guid>
-    <description><![CDATA[{tlist}]]></description>
-    <enclosure url="http://leancrew.com/bbc/{code}.m4a" length="{length}" type="audio/mpeg"/>
-    <category>Podcasts</category>
-    <pubDate>{date}</pubDate>
-  </item>
-  '''.format(**vars())
 
-    return item
-  except:
-    return None
-  
+#   try:
+  (title, date, tlist) = episodeInfo(code)
+  tlist = tlist.replace('\n', '<br />\n')
+  date = date.strftime("%a, %d %b %Y %H:%M:%S +0000")
+  item = u'''  <item>
+  <title>{title}</title>
+  <link>http://bbc.co.uk/programmes/{code}</link>
+  <guid>http://leancrew.com/bbc/{code}.m4a</guid>
+  <description><![CDATA[{tlist}]]></description>
+  <enclosure url="http://leancrew.com/bbc/{code}.m4a" length="{length}" type="audio/mpeg"/>
+  <category>Podcasts</category>
+  <pubDate>{date}</pubDate>
+</item>
+'''.format(**vars())
+
+  return item
+#   except:
+#     return None
+
 
 if __name__ == "__main__":
   if len(argv) > 1 and argv[1] in showinfo.keys():
